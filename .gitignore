@@ -1,0 +1,3 @@
+build/
+data/*.ply
+!data/bunny.ply
