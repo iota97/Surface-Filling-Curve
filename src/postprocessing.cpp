@@ -188,17 +188,17 @@ void medialAxisRepulsion(std::vector<std::vector<std::array<Vec3, 2>>> &cycles, 
 
             // Reduce impact
             const auto &old = oldCurves[curveIdx++];
-            for (size_t i = 0; i < curve.size(); ++i) {
+            Parallel::For(0, curve.size(), [&](size_t i) {
                 curve[i] = strength*curve[i] + (1-strength)*old[i];
-            }
+            });
 
             // Resample the curve.
             curve = resampleCurve(curve, 0.25f*spacing);
 
             // Reproject the curve on the surface.
-            for (auto &p : curve) {
-                p = bvhTriangle.closestPoint(p);
-            }
+            Parallel::For(0, curve.size(), [&](size_t i) {
+                curve[i] = bvhTriangle.closestPoint(curve[i]);
+            });
             curve = resampleCurve(curve, 0.25f*spacing);
         }
     }

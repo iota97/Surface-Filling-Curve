@@ -4,6 +4,12 @@ This repository contains the reference implementation of **Field-Aligned Surface
 
 ![Teaser image](img/teaser.png)
 
+## Replicability
+
+This code has received the Graphics replicability stamp.
+
+[![](https://www.replicabilitystamp.org/logo/Reproducibility-small.png)](http://www.replicabilitystamp.org#https-github-com-iota97-surface-filling-curve)
+
 ## Building
 
 The project is designed with minimal dependencies in mind, relying only on the C++17 standard library. This makes the build process straightforward.
@@ -38,7 +44,7 @@ curve_spacing: Target distance between parallel segments of the curve.
 [-p]: Initialize the direction field using vertex color luminosity as an angle (0° to 180°) from a smooth direction field parallel to the mesh borders.
 [-n]: Initialize the direction field using vertex color luminosity as an angle (0° to 180°) from the direction of the closest mesh borders.  
 [-r]: Uniformly resample the curve. This does not guarantee that the curve remains on the surface.
-[-R] Repulse the curve and greatly improve spacing [Experimental].
+[-R]: Repulse the curve and greatly improve spacing [Experimental].
 [-q]: Suppress console output.  
 [-c curve.ply]: Export the curve as a polyline.
 ```
@@ -70,7 +76,7 @@ The option `-R` applies a post-processing step using the [implicit medial axis](
 
 ### Mesh Input Format
 
-The input mesh must be both vertex and edge manifold. The direction field can be provided using the vertex color attributes of the PLY file format. Furthermore, no vertex seams should be present.
+The input mesh must be both vertex and edge manifold. The direction field can be provided using the vertex color attributes of the PLY file format. Furthermore, no vertex seams should be present. For the best quality, we advise using an isotropically triangulated mesh to avoid sliver triangles.
 
 **Note**: Our PLY loader is naive and supports only a limited subset of the ASCII format. In particular, no attributes other than vertex position and color should be present. Please refer to the file `data/bunny.ply` for an example of the expected PLY header. To export a PLY file from Blender, use the following export options.
 

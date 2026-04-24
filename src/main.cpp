@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         std::cout << "[-p]: Initialize the direction field using vertex color luminosity as an angle (0 to 180 degrees) from a smooth direction field parallel to the mesh borders.\n";
         std::cout << "[-n]: Initialize the direction field using vertex color luminosity as an angle (0 to 180 degrees) from the direction of the closest mesh borders.  \n";
         std::cout << "[-r]: Uniformly resample the curve. This does not guarantee that the curve remains on the surface.\n";
-        std::cout << "[-R] Repulse the curve and greatly improve spacing [Experimental].\n";
+        std::cout << "[-R]: Repulse the curve and greatly improve spacing [Experimental].\n";
         std::cout << "[-q]: Suppress console output.\n";
         std::cout << "[-c curve.ply]: Export the curve as a polyline.\n\n";
         std::cout << "[DEBUG_OPTIONS]: the following options were used for debugging.\n";
